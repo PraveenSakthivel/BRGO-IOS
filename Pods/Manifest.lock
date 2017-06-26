@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.0.1)
+  - CVCalendar (1.4.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - CVCalendar (~> 1.4.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  CVCalendar: ec1a06a508f99d8e5067258754f811a8a1433a3f
+
+PODFILE CHECKSUM: d519a08cb402f80099a820431460bd5a14a77d4d
+
+COCOAPODS: 1.1.0.rc.2
