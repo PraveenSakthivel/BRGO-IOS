@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//The view that expands when you click on an item in CalendarController
 class FullCalendar: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var info: newsarticle = newsarticle()
 
@@ -17,11 +17,11 @@ class FullCalendar: UIViewController, UITableViewDataSource, UITableViewDelegate
         super.viewDidLoad()
         Desc.text = info.description
         titlebox.textLabel!.text = info.title
-        Desc.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        Desc.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        Desc.backgroundColor = Colors.primary
+        Desc.textColor = Colors.secondary
         Desc.font = UIFont(name:"Bodoni 72", size: 16)
-        self.view.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        titlebox.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        self.view.backgroundColor = Colors.primary
+        titlebox.backgroundColor = Colors.secondary
         titlebox.textLabel!.font = UIFont(name:"Bodoni 72", size: 22)
         titlebox.textLabel!.textColor = UIColor.white
         titlebox.textLabel!.numberOfLines = 2
@@ -54,7 +54,7 @@ class FullCalendar: UIViewController, UITableViewDataSource, UITableViewDelegate
             cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         }
         cell.textLabel?.text = info.title
-        cell.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        cell.backgroundColor = Colors.secondary
         cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 22)
         cell.textLabel!.textColor = UIColor.white
         cell.textLabel!.numberOfLines = 2

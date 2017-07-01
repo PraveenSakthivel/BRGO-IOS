@@ -26,12 +26,12 @@ extension UIViewController
         var defaultMenuImage = UIImage()
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 22), false, 0.0)
         
-        UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1).setFill()
+        Colors.secondary.setFill()
         UIBezierPath(rect: CGRect(x: 0, y: 3, width: 30, height: 1)).fill()
         UIBezierPath(rect: CGRect(x: 0, y: 10, width: 30, height: 1)).fill()
         UIBezierPath(rect: CGRect(x: 0, y: 17, width: 30, height: 1)).fill()
         
-        UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1).setFill()
+        Colors.secondary.setFill()
         UIBezierPath(rect: CGRect(x: 0, y: 4, width: 30, height: 1)).fill()
         UIBezierPath(rect: CGRect(x: 0, y: 11,  width: 30, height: 1)).fill()
         UIBezierPath(rect: CGRect(x: 0, y: 18, width: 30, height: 1)).fill()

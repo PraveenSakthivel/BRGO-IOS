@@ -30,7 +30,7 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         self.tableView.tableHeaderView = searchController.searchBar
         refreshController = UIRefreshControl()
         refreshController.addTarget(self, action: #selector(WebtableController.refresh(_:)), for: UIControlEvents.valueChanged)
-        self.tableView.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
+        self.tableView.separatorColor = Colors.tertiary
         self.tableView.addSubview(refreshController)
         getdata()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -45,20 +45,10 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         navicon.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         let defaults = UserDefaults.init(suiteName: "group.BRGO.data")
-        //This Section will have to be removed next update
-        if(!(defaults?.bool(forKey: "hasConverted"))!)
-        {
-            prefToData()
-            defaults?.set(true, forKey: "hasConverted")
-        }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     
+    //Adjust the data set to show the teachers user have saved or the full data set
     func PreferencesToggled(_ sender: UIButton) {
         let defaults = UserDefaults.init(suiteName: "group.BRGO.data")
         if dataToggle.isOn
@@ -69,7 +59,7 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
             }
             else{
                 data = [newsarticle]()
-                data.append(newsarticle(name: "No Teachers Saved",desc: "http://www.google.com"))
+                data.append(newsarticle(name: "No Teachers Saved",desc: ""))
                 let alert = UIAlertController(title: "No Teachers Saved", message: "", preferredStyle:  UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -90,6 +80,8 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         getdata()
         refreshController.endRefreshing()
     }
+    
+    //converts the titles of main data set into a string array
     func toStringArray() -> [String]
     {
         var temp = [String]()
@@ -99,6 +91,8 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         }
         return temp
     }
+    
+    //converts the title of a specific newsarticle array
     func toStringArray(_info:[newsarticle]) -> [String]{
         var temp = [String]()
         for element in _info
@@ -130,15 +124,17 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    //Gets the names of every teacher for the school and the link to their website
     func getdata(){
         let defaults = UserDefaults.standard
-        let school = defaults.object(forKey: "School") as! Int
+        let school = defaults.object(forKey: "School") as! Int //This is the OnCourse ID for the school
         let myJsonDict = [
             
             "action":"Websites",
             "method":"school_webpage",
             "tid":2,
-            "data":[["schoolId":school]],
+            "data":[["schoolId":school]], //Parameters for the Post Request- Standard for all schools
             "type":"rpc"
             ] as [String : Any]
         
@@ -159,6 +155,8 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
                 self.parseJson(response.result.value as! NSDictionary)
         }
     }
+    
+    //Parse the JSON from the response into links and names
     func parseJson(_ JsonDict: AnyObject)
     {
         var data = [newsarticle]()
@@ -178,6 +176,8 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
             }
         }
     }
+    
+    //add the teacher names and links into one newarticle class and add to main data set
     func addData(_ info: [newsarticle])
     {
         data = info
@@ -209,12 +209,13 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
         else{
             cell.textLabel?.text = data[(indexPath as NSIndexPath).row].title
         }
-        cell.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        cell.backgroundColor = Colors.primary
         cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
-        cell.textLabel!.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        cell.textLabel!.textColor = Colors.secondary
         return cell
     }
     
+    //Add the save and delete buttons to the tableView
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if !dataToggle.isOn
         {
@@ -271,7 +272,7 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
                 self.present(alert, animated: true, completion: nil)
                 self.updateStatus()
             }
-            save.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+            save.backgroundColor = Colors.secondary
             return [save]
         }
         else{
@@ -296,16 +297,6 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
             remove.backgroundColor = UIColor.red
             return [remove]
         }
-    }
-    
-    func prefToData()
-    {
-        let links = PlistManager.sharedInstance.getValueForKey("TeachLinks") as! [String]
-        let tnames = PlistManager.sharedInstance.getValueForKey("TeachNames") as! [String]
-        let defaults = UserDefaults.init(suiteName: "group.BRGO.data")!
-        defaults.set(tnames, forKey: "TeachNames")
-        defaults.set(links, forKey: "TeachLinks")
-        updateStatus()
     }
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -377,6 +368,8 @@ class WebtableController: UITableViewController, UISearchBarDelegate, UISearchRe
             defaults.set(true, forKey: "isData")
         }
     }
+    
+    //converts the saved teachers into a useable NewsArticle class
     func savedData() -> [newsarticle]{
         let defaults = UserDefaults.init(suiteName: "group.BRGO.data")
         let sNames = defaults?.stringArray(forKey: "TeachNames")

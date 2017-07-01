@@ -10,16 +10,17 @@ import UIKit
 
 class NavController: UINavigationController {
 
+    //Set the formatting for the navigation bar
     override func viewDidLoad() {
         super.viewDidLoad()
-      self.navigationBar.barTintColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        self.navigationBar.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        self.navigationBar.barTintColor = Colors.primary
+        self.navigationBar.backgroundColor = Colors.primary
         let border = CALayer()
-        border.backgroundColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1).cgColor
+        border.backgroundColor = Colors.tertiary.cgColor
         border.frame = CGRect(x:0, y: self.navigationBar.frame.size.height-1, width:  self.navigationBar.frame.size.width, height:  1)
         self.navigationBar.layer.addSublayer(border)
         self.navigationBar.layer.masksToBounds = true
-        self.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Bodoni 72", size: 30)!, NSForegroundColorAttributeName: UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)]
+        self.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Bodoni 72", size: 30)!, NSForegroundColorAttributeName: Colors.secondary]
         self
         // Do any additional setup after loading the view.
     }

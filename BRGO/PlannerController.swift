@@ -37,7 +37,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
         let AddButton = UIButton(type: .custom)
         AddButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         AddButton.setTitle("+", for: UIControlState())
-        AddButton.setTitleColor(UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1), for: UIControlState())
+        AddButton.setTitleColor(Colors.secondary, for: UIControlState())
         AddButton.titleLabel!.font = UIFont(name: "Bodoni 72", size: 40)
         let AddView = UIBarButtonItem(customView: AddButton)
         self.navigationItem.rightBarButtonItem = AddView
@@ -70,7 +70,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
         calendarView.commitCalendarViewUpdate()
     }
     
-    //Adds a left swipe gesture to the Planner
+    //Adds a left swipe gesture to the Planner ERROR: Will not work because it conflicts with menu bar swipe
     func swipeDateL(){
         calendarView.toggleViewWithDate(NSDate.init(timeInterval: 86400, since: (saveDate.convertedDate())!) as Date)
         tables.reloadData()
@@ -133,12 +133,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func textViewDidBeginEditing(_ textView: UITextView)
-    {
-
-    }
-    
+    //Save what the user is written as soon as they stop writing
     func textViewDidEndEditing(_ textView: UITextView)
     {
         info.insert(textView.text, at: textView.tag)
@@ -168,7 +163,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
             else{
             event.startDate = NSDate() as Date
             }
-            event.endDate = event.startDate.addingTimeInterval(86400) //1 hour long meeting
+            event.endDate = event.startDate.addingTimeInterval(86400) //Insert your desired time value or add popup for user to select
             event.calendar = store.defaultCalendarForNewEvents
             do {
                 try store.save(event, span: .thisEvent, commit: true)
@@ -176,9 +171,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            catch {
-                // Display error to user
-            }
+            catch {            }
         }
     }
     
@@ -212,7 +205,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
             cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         }
         let textbox = UITextView(frame: CGRect(x: 0, y: 0,width: (tables.window?.frame.width)! ,height: 199))
-        textbox.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        textbox.backgroundColor = Colors.primary
         textbox.isEditable = true
         textbox.isUserInteractionEnabled = true
         if let date = selectedDay
@@ -275,6 +268,7 @@ class PlannerController: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
 
 }
+    //CVCalendar Library
     extension PlannerController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
         
         /// Required method to implement!

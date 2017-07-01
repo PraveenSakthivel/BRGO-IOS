@@ -10,7 +10,7 @@ import UIKit
 
 class NewController: UIViewController, UITableViewDataSource, UITableViewDelegate, XMLParserDelegate {
     @IBOutlet weak var tables: UITableView!
-
+    
     var parser: XMLParser = XMLParser()
     var info: [newsarticle] = []
     var postTitle: String = String()
@@ -25,26 +25,26 @@ class NewController: UIViewController, UITableViewDataSource, UITableViewDelegat
      }
      */
     var refreshControl: UIRefreshControl!
-   override func viewDidLoad() {
-    let navicon = UIButton(type: UIButtonType.system)
-    navicon.setImage(defaultMenuImage(), for: UIControlState())
-    navicon.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-    let menu = UIBarButtonItem(customView: navicon)
-    self.navigationItem.leftBarButtonItem = menu
-    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    navicon.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+    override func viewDidLoad() {
+        let navicon = UIButton(type: UIButtonType.system)
+        navicon.setImage(defaultMenuImage(), for: UIControlState())
+        navicon.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let menu = UIBarButtonItem(customView: navicon)
+        self.navigationItem.leftBarButtonItem = menu
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        navicon.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         let url:URL = URL(string: "http://" + schoolPrefix() + "brrsd.org/apps/news/news_rss.jsp?id=0")!
         parser = XMLParser(contentsOf: url)!
         parser.delegate = self
         parser.parse()
-    print(parser.parserError)
-    refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(NewController.refresh(_:)), for: UIControlEvents.valueChanged)
-    tables.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
-    tables.addSubview(refreshControl)
-    tables.tableFooterView = UIView(frame: CGRect.zero)
- //   self.view.window!.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 242/255, alpha: 1.0)
-    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        print(parser.parserError)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        tables.separatorColor = Colors.tertiary
+        tables.addSubview(refreshControl)
+        tables.tableFooterView = UIView(frame: CGRect.zero)
+        //   self.view.window!.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 242/255, alpha: 1.0)
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     func refresh(_ sender: AnyObject)
     {
@@ -100,7 +100,7 @@ class NewController: UIViewController, UITableViewDataSource, UITableViewDelegat
         // #warning Incomplete implementation, return the number of rows
         if info.count > 0
         {
-        return info.count
+            return info.count
         }
         else{
             info.append(newsarticle(name: "No News",desc: "No News"))
@@ -118,20 +118,22 @@ class NewController: UIViewController, UITableViewDataSource, UITableViewDelegat
         if let label = cell.textLabel {
             label.text = news.title
         }
-        cell.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        cell.backgroundColor = Colors.primary
         cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
-        cell.textLabel!.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        cell.textLabel!.textColor = Colors.secondary
         return cell    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         index = (indexPath as NSIndexPath).row
         tables.deselectRow(at: indexPath, animated:true)
-            performSegue(withIdentifier: "NewsTransfer", sender:self)
+        performSegue(withIdentifier: "NewsTransfer", sender:self)
     }
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let Destination: FullNews = segue.destination as! FullNews
         Destination.info = info[index]
-
+        
     }
+    
+    //converts OnCourse School Code into corresponding subdomain
     func schoolPrefix() -> String{
         let defaults = UserDefaults.standard
         let url: String
@@ -175,18 +177,18 @@ class NewController: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
         return url
     }
-
-
     
-
+    
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

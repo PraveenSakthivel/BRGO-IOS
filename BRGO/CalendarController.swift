@@ -36,7 +36,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationItem.leftBarButtonItem = menu
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         navicon.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        let url:URL = URL(string: "http://" + schoolPrefix() + "brrsd.org/apps/events2/events_rss.jsp?id=0")!
+        let url:URL = URL(string: "http://" + schoolPrefix() + "brrsd.org/apps/events2/events_rss.jsp?id=0")! //Insert the url for the RSS Feed
         parser = XMLParser(contentsOf: url)!
         parser.delegate = self
         parser.parse()
@@ -45,13 +45,15 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         refreshControl.addTarget(self, action: #selector(CalendarController.refresh(_:)), for: UIControlEvents.valueChanged)
         
         multiview.addSubview(refreshControl)
-        multiview.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
+        multiview.separatorColor = Colors.tertiary
         let background = UIView()
-        background.tintColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        background.tintColor = Colors.primary
         multiview.tableFooterView = background
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
-        func orgData(){
+    
+    //Organize the Calendar events by date
+    func orgData(){
         var i = 0
         while i < info.count{
             if((info[i].description) == headDates)
@@ -117,14 +119,14 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         if format
         {
-            cell.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+            cell.backgroundColor = Colors.secondary
             cell.textLabel?.textColor = UIColor.white
             cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
         }
         else{
-            cell.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+            cell.backgroundColor = Colors.primary
             cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
-            cell.textLabel!.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+            cell.textLabel!.textColor = Colors.secondary
         }
         return cell    }
     
@@ -132,7 +134,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if (!data.isEmpty) {
-            if eName == "title" {
+            if eName == "title" { //eName is the XML identifier
                 postTitle += data
             } else if eName == "description" {
                 postDesc += data
@@ -159,7 +161,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         multiview.deselectRow(at: indexPath, animated:true)
         if a{
-        performSegue(withIdentifier: "CalendarTransfer", sender:self)
+            performSegue(withIdentifier: "CalendarTransfer", sender:self)
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -175,7 +177,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
     }
-
+    //Converts the OnCourse school code into the corresponding subdomain
     func schoolPrefix() -> String{
         let defaults = UserDefaults.standard
         let url: String

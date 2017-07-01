@@ -8,6 +8,8 @@
 
 import Foundation
 
+/** Most of the data used comes as two connected strings. This class allows us to keep
+ them connected */
 class newsarticle {
     var title: String = String();
     var description: String = String();

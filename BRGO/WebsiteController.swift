@@ -8,6 +8,7 @@
 
 import UIKit
 
+//The browser view for WebTableController
 class WebsiteController: UIViewController, UIWebViewDelegate {
     var postLink: String = String()
 
@@ -25,12 +26,12 @@ class WebsiteController: UIViewController, UIWebViewDelegate {
         let backText = UIButton(type: .custom)
         backText.frame = CGRect(x: 0, y: 0, width: 40, height: 80)
         backText.setTitle("<", for: UIControlState())
-        backText.setTitleColor(UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1), for: UIControlState())
+        backText.setTitleColor(Colors.secondary, for: UIControlState())
         backText.titleLabel!.font = UIFont(name: "Helvetica", size: 30)
         let forText = UIButton(type: .custom)
         forText.frame = CGRect(x: 0, y: 0, width: 40, height: 80)
         forText.setTitle(">", for: UIControlState())
-        forText.setTitleColor(UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1), for: UIControlState())
+        forText.setTitleColor(Colors.secondary, for: UIControlState())
         forText.titleLabel!.font = UIFont(name: "Helvetica", size: 30)
         let back = UIBarButtonItem(customView: backText)
         let forward = UIBarButtonItem(customView: forText)

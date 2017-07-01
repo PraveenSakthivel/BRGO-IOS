@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1C409E855C2F255CED40EE9A /* Pods_BRGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48170253836030E43D0E36A3 /* Pods_BRGO.framework */; };
+		9E4704F51F086BA600E1C88F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4704F41F086BA600E1C88F /* Colors.swift */; };
 		AC04C63D1D4E8C0900FBEDF4 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04C63C1D4E8C0900FBEDF4 /* About.swift */; };
 		AC23CDA01D45351B0037F959 /* MyData.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC23CD9E1D45351B0037F959 /* MyData.plist */; };
 		AC23CDA11D45351B0037F959 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23CD9F1D45351B0037F959 /* PlistManager.swift */; };
 		AC23CDA91D458AC80037F959 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23CDA81D458AC80037F959 /* Header.swift */; };
-		AC23CDB61D45A24A0037F959 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC23CDB11D45A24A0037F959 /* UIImage+Additions.m */; };
-		AC23CDB71D45A24A0037F959 /* UIView+ViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AC23CDB31D45A24A0037F959 /* UIView+ViewHelpers.m */; };
 		AC23CDB91D467BA20037F959 /* PlannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23CDB81D467BA20037F959 /* PlannerController.swift */; };
 		AC23CDC91D47D1350037F959 /* StudentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23CDC81D47D1350037F959 /* StudentID.swift */; };
 		AC3B141B1D15B7B3008917F3 /* WebtableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B141A1D15B7B3008917F3 /* WebtableController.swift */; };
@@ -85,14 +84,11 @@
 		68EA581B5F4EF16D315403F9 /* Pods-BRGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRGO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BRGO/Pods-BRGO.debug.xcconfig"; sourceTree = "<group>"; };
 		8875609E767968AB447018E0 /* Pods-BRGO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRGO.release.xcconfig"; path = "Pods/Target Support Files/Pods-BRGO/Pods-BRGO.release.xcconfig"; sourceTree = "<group>"; };
 		9E3404CCFE2495D934D35016 /* Pods-BRGOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRGOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BRGOTests/Pods-BRGOTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9E4704F41F086BA600E1C88F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Colors.swift; sourceTree = "<group>"; };
 		AC04C63C1D4E8C0900FBEDF4 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		AC23CD9E1D45351B0037F959 /* MyData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyData.plist; sourceTree = "<group>"; };
 		AC23CD9F1D45351B0037F959 /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		AC23CDA81D458AC80037F959 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		AC23CDB01D45A24A0037F959 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
-		AC23CDB11D45A24A0037F959 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
-		AC23CDB21D45A24A0037F959 /* UIView+ViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewHelpers.h"; sourceTree = "<group>"; };
-		AC23CDB31D45A24A0037F959 /* UIView+ViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewHelpers.m"; sourceTree = "<group>"; };
 		AC23CDB81D467BA20037F959 /* PlannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlannerController.swift; sourceTree = "<group>"; };
 		AC23CDC81D47D1350037F959 /* StudentID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentID.swift; sourceTree = "<group>"; };
 		AC3B141A1D15B7B3008917F3 /* WebtableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebtableController.swift; sourceTree = "<group>"; };
@@ -216,6 +212,7 @@
 		AC4BDF3F1D0DCDFD00EC75D8 /* BRGO */ = {
 			isa = PBXGroup;
 			children = (
+				9E4704F41F086BA600E1C88F /* Colors.swift */,
 				AC84E4E71DD972C5008AFB12 /* BRGO.entitlements */,
 				ACCBE2EB1D3FDC6B00C22595 /* SWRevealViewController.h */,
 				AC23CD9E1D45351B0037F959 /* MyData.plist */,
@@ -257,10 +254,6 @@
 				ACBBA5591D41C02700EADC4A /* 14271Planner.pdf */,
 				ACBBA55A1D41C02700EADC4A /* 14273Planner.pdf */,
 				ACBBA55B1D41C02700EADC4A /* 14274Planner.pdf */,
-				AC23CDB01D45A24A0037F959 /* UIImage+Additions.h */,
-				AC23CDB11D45A24A0037F959 /* UIImage+Additions.m */,
-				AC23CDB21D45A24A0037F959 /* UIView+ViewHelpers.h */,
-				AC23CDB31D45A24A0037F959 /* UIView+ViewHelpers.m */,
 			);
 			path = BRGO;
 			sourceTree = "<group>";
@@ -555,7 +548,6 @@
 			files = (
 				AC23CDA91D458AC80037F959 /* Header.swift in Sources */,
 				AC04C63D1D4E8C0900FBEDF4 /* About.swift in Sources */,
-				AC23CDB71D45A24A0037F959 /* UIView+ViewHelpers.m in Sources */,
 				AC4BDF861D0DCE5B00EC75D8 /* SettingsController.swift in Sources */,
 				ACBBA5501D41BD5900EADC4A /* HandbookController.swift in Sources */,
 				AC3B141B1D15B7B3008917F3 /* WebtableController.swift in Sources */,
@@ -567,8 +559,8 @@
 				AC4BDF831D0DCE5B00EC75D8 /* NewsArticle.swift in Sources */,
 				AC4BDF821D0DCE5B00EC75D8 /* NewController.swift in Sources */,
 				AC4BDF7E1D0DCE5B00EC75D8 /* FullCalendar.swift in Sources */,
+				9E4704F51F086BA600E1C88F /* Colors.swift in Sources */,
 				ACCBE2EA1D3F0AFF00C22595 /* Menu.swift in Sources */,
-				AC23CDB61D45A24A0037F959 /* UIImage+Additions.m in Sources */,
 				AC4BDF851D0DCE5B00EC75D8 /* Schools.swift in Sources */,
 				AC23CDA11D45351B0037F959 /* PlistManager.swift in Sources */,
 				AC90B0AA1D3C4755006F1959 /* Welcome Screen.swift in Sources */,

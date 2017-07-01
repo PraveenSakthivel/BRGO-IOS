@@ -53,6 +53,7 @@ class StudentID: UIViewController, UIImagePickerControllerDelegate, UINavigation
         presentCamera()
     }
     
+    //Starts the picture taking proccess
     func presentCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         {
@@ -74,7 +75,7 @@ class StudentID: UIViewController, UIImagePickerControllerDelegate, UINavigation
             saveImage(imageToSave, path: fileinDocumentsDirectory("ID"))
         }
     }
-    
+    //Gets the url for the where the picture is/will be saved
     func getDocumentsURL() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
@@ -82,6 +83,8 @@ class StudentID: UIViewController, UIImagePickerControllerDelegate, UINavigation
     let fileURL = getDocumentsURL().appendingPathComponent(filename)
     return fileURL.path
     }
+    
+    //save the image to a specific path
     func saveImage(_ image: UIImage, path: String) -> Bool{
         let pngImageData = UIImagePNGRepresentation(image)
         let result = (try? pngImageData!.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil

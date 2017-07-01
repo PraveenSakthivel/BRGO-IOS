@@ -13,9 +13,9 @@ class SettingsController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var Tables: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-   Tables.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
+   Tables.separatorColor = Colors.tertiary
         let background = UIView()
-        background.tintColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        background.tintColor = Colors.primary
         Tables.tableFooterView = background
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         let navicon = UIButton(type: UIButtonType.system)
@@ -59,9 +59,9 @@ class SettingsController: UIViewController, UITableViewDataSource, UITableViewDe
         else{
             cell.textLabel!.text = "About"
         }
-        cell.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        cell.backgroundColor = Colors.primary
         cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
-        cell.textLabel!.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        cell.textLabel!.textColor = Colors.secondary
         return cell    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Tables.deselectRow(at: indexPath, animated:true)

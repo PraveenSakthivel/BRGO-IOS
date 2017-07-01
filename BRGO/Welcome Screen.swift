@@ -12,6 +12,7 @@ class Welcome_Screen: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet var Button: UIButton!
     @IBOutlet var PickerView: UIPickerView!
     var index = Int()
+    //insert the names of your district schools here
     let pickerDataSource = ["High School", "Middle School", "Hillside", "Eisenhower", "Van Holten","Milltown", "John F. Kennedy","Hamilton", "Crim","Bradely Gardens", "Adamsville"];
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class Welcome_Screen: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
+    /**These are OnCourse systems code for your school. If your school doesnt use this
+     service, use your own identifying numbers*/
     @IBAction func ButtonPress(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         switch index {

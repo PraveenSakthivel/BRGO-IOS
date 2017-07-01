@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//view that expands when you click on an item in NewsController
 class FullNews: UIViewController {
     var info: newsarticle = newsarticle()
 
@@ -17,12 +17,12 @@ class FullNews: UIViewController {
         super.viewDidLoad()
        Desc.text = info.description
         titlebox.textLabel?.text = info.title
-        //titlebox.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
+        //titlebox.separatorColor = Colors.tertiary
         Desc.text = info.description
-        Desc.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        Desc.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        Desc.backgroundColor = Colors.primary
+        Desc.textColor = Colors.secondary
         Desc.font = UIFont(name:"Bodoni 72", size: 16)
-        titlebox.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        titlebox.backgroundColor = Colors.secondary
         titlebox.textLabel!.font = UIFont(name:"Bodoni 72", size: 22)
         titlebox.textLabel!.textColor = UIColor.white
         titlebox.textLabel!.numberOfLines = 2

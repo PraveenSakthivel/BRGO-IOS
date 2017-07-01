@@ -13,8 +13,8 @@ class About: UIViewController {
     @IBOutlet var Desc: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        Desc.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        Desc.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        Desc.backgroundColor = Colors.primary
+        Desc.textColor = Colors.secondary
         Desc.font = UIFont(name:"Bodoni 72", size: 16)
 
         // Do any additional setup after loading the view.

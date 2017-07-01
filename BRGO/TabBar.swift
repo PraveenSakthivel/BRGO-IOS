@@ -12,11 +12,11 @@ class TabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.tintColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
-        //self.view. = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-        self.tabBar.barTintColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        self.view.tintColor = Colors.tertiary
+        //self.view. = Colors.primary
+        self.tabBar.barTintColor = Colors.secondary
         self.tabBar.layer.borderWidth = 0.50
-        self.tabBar.layer.borderColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1).cgColor
+        self.tabBar.layer.borderColor = Colors.tertiary.cgColor
 
         // Do any additional setup after loading the view.
     }

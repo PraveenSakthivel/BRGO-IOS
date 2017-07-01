@@ -13,9 +13,9 @@ class Menu: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let background = UIView()
-        background.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+        background.backgroundColor = Colors.secondary
         self.tableView.tableFooterView = background
-        self.tableView.separatorColor = UIColor.init(red: 217/255, green: 180/255, blue: 74/255, alpha: 1)
+        self.tableView.separatorColor = Colors.tertiary
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -67,12 +67,12 @@ class Menu: UITableViewController {
         }
         if (indexPath as NSIndexPath).row > 0
         {
-        cell.backgroundColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
-        cell.textLabel!.textColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
+        cell.backgroundColor = Colors.secondary
+        cell.textLabel!.textColor = Colors.primary
         }
         else{
-            cell.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 242/255, alpha: 1)
-            cell.textLabel?.textColor = UIColor.init(red: 25/255, green: 149/255, blue: 173/255, alpha: 1)
+            cell.backgroundColor = Colors.primary
+            cell.textLabel?.textColor = Colors.secondary
         }
         cell.textLabel!.font = UIFont(name:"Bodoni 72", size: 16)
         return cell
